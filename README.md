@@ -1,7 +1,27 @@
 # CodeIgniter3-MY_Model
 
 It provides a full CRUD base for database interactions, intelligent table name guessing and soft delete.
+## Installation/Usage
 
+Download and drag the **MY_Model.php** file into your **application/core** directory. CodeIgniter will load and initialise this class automatically.
+
+Extend your model classes from MY_Model and all the functionality will be baked in automatically.
+```php
+class User_model extends MY_Model
+{
+protected $table = 'users'; //you MUST mention the table name
+protected $primaryKey = 'id'; //you MUST mention the primary key
+protected $createdField  = ''; //created_at field name
+protected $updatedField  = '';  //updated_at field name
+protected $deletedField  = '';  //deleted field name
+protected $useSoftDeletes = false; //if you need to apply  soft delete 
+
+	public function __construct()
+	{
+		parent::__construct();
+	}
+}
+```
 
 ## example
 ```php
@@ -39,27 +59,7 @@ $this->user_model->delete(1);
 $this->user_model->softDelete(1);
 ```
 
-## Installation/Usage
 
-Download and drag the **MY_Model.php** file into your **application/core** directory. CodeIgniter will load and initialise this class automatically.
-
-Extend your model classes from MY_Model and all the functionality will be baked in automatically.
-```php
-class User_model extends MY_Model
-{
-	protected $table = 'users'; // you MUST mention the table name
-	protected $primaryKey = 'id'; // you MUST mention the primary key
-    protected $createdField  = ''; //created_at field name
-    protected $updatedField  = '';  //updated_at field name
-    protected $deletedField  = '';  //deleted field name
-    protected $useSoftDeletes = false; //if you need to apply  soft delete 
-
-	public function __construct()
-	{
-		parent::__construct();
-	}
-}
-```
 
 
 
